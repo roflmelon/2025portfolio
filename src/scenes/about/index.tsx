@@ -1,7 +1,7 @@
 import HText from "@/shared/HText";
 import { AboutMe, SelectedPage } from "@/shared/types";
 import { HomeModernIcon, UserGroupIcon, AcademicCapIcon } from "@heroicons/react/24/solid";
-import { motion, stagger } from "framer-motion";
+import { motion } from "framer-motion";
 import AboutMeCard from "./AboutMeCard";
 import ActionButton from "@/shared/ActionButton";
 import BenefitPageGraphic from "@/assets/images/BenefitsPageGraphic.png"
