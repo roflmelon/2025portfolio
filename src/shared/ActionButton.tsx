@@ -4,17 +4,18 @@ import { SelectedPage } from "./types"
 
 type Props = {
     children: React.ReactNode
-    setSelectedPage: (value: SelectedPage) => void
 }
-
-const ActionButton = ({children, setSelectedPage}: Props) => {
+//make this button download cv
+const ActionButton = ({children}: Props) => {
   return (
     <AnchorLink
-        className="rounded-md bg-dark-primary px-10 py-2 hover:bg-dark-600 transition duration-500 hover:text-light-primary"
-        onClick={() => setSelectedPage(SelectedPage.CONTACTME)}
-        href={`#${SelectedPage.CONTACTME}`}
+        className="relative inline-block text-sm font-medium text-white group"
     >
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-400 via-purple-500 to-blue-300 rounded-md blur-sm"></span>
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-400 via-purple-500 to-blue-300 rounded-md"></span>
+      <span className="relative block px-8 py-2 bg-dark-primary border border-transparent rounded-md group-hover:bg-opacity-0 transition duration-500 cursor-pointer">
         {children}
+      </span>
     </AnchorLink>
   )
 }

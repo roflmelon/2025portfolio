@@ -1,26 +1,21 @@
 import { SelectedPage } from "@/shared/types";
-import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
 import HomePageText from "@/assets/images/HomePageText.png"; 
 import HomePageGraphic from "@/assets/images/HomePageGraphic.png"; 
-import SponsorRedBull from "@/assets/images/SponsorRedBull.png";
-import SponsorForbes from "@/assets/images/SponsorForbes.png"; 
-import SponsorFortune from "@/assets/images/SponsorFortune.png"; 
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
 
 type Props = {setSelectedPage: (value: SelectedPage) => void}
 
 const Hero = ({setSelectedPage}: Props) => {
-    const isAboveMediumScreen:boolean = useMediaQuery("(min-width: 1060px)");
 
 
   return (
-    <section id="myexpertise" className="gap-16 bg-dark-700 py-10 md:h-full md:pb-0">
+    <section id="hero" className="gap-16 bg-dark-primary py-10 md:h-lvh md:pb-0">
         {/* Image and main header */}
         <motion.div 
-            className="md:flex mx-auto w-5/6 items-center justify-center md:h-5/6"
-            onViewportEnter={()=> setSelectedPage(SelectedPage.MYEXPERTISE)}
+            className="md:flex mx-auto w-5/6 items-center justify-center md:h-dvh"
+            onViewportEnter={()=> setSelectedPage(SelectedPage.HERO)}
         >
             {/* Main header */}
             <div className="z-10 mt-32 md:basis-3/5">
@@ -55,7 +50,7 @@ const Hero = ({setSelectedPage}: Props) => {
                         visible: { opacity: 1, x: 0 }
                     }}
                 >
-                    <ActionButton setSelectedPage={setSelectedPage}>Contact Me</ActionButton>
+                    <ActionButton>Contact Me</ActionButton>
                     <AnchorLink 
                         className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
                         onClick={() => setSelectedPage(SelectedPage.CONTACTME)}
@@ -70,18 +65,6 @@ const Hero = ({setSelectedPage}: Props) => {
                 <img alt="home-page-graphic" src={HomePageGraphic} />
             </div>
         </motion.div>
-        {/* Sponsors */}
-        {isAboveMediumScreen && (
-            <div className="h-[150px] w-full bg-primary-100 py-10">
-                <div className="mx-auto w-5/6">
-                    <div className="flex w-3/5 items-center justify-between gap-8">
-                        <img alt="sponsor-redbull" src={SponsorRedBull} />
-                        <img alt="sponsor-forbes" src={SponsorForbes} />
-                        <img alt="sponsor-fortune" src={SponsorFortune} />
-                    </div>
-                </div>
-            </div>
-        )}
     </section>
   )
 }

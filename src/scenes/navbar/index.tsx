@@ -1,10 +1,11 @@
 import { useState } from "react";
-import Logo from "@/assets/images/Logo.png"; // Replace with the actual path to your logo file
+import Logo from "@/assets/images/LogoDarkTheme.png"; // Replace with the actual path to your logo file
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Link from "./Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
   isTopOfPage: boolean;
@@ -16,7 +17,7 @@ const NavBar = ({ isTopOfPage, selectedPage, setSelectedPage}: Props) => {
   const flexBetween:string = "flex justify-between items-center";
   const isAboveMediumScreen:boolean = useMediaQuery("(min-width: 1060px)");
   const [isMenuToggled, setIsMenuToggled] = useState(false);
-  const navbarBackground = isTopOfPage ? "bg-transparent drop-shadow" : "bg-dark-900";
+  const navbarBackground = isTopOfPage ? "transition duration-500 bg-transparent shadow-[0_-20px_50px_0px_rgba(255,255,255,0.1)]" : "transition duration-500 bg-dark-secondary";
 
   return (
     <nav>
@@ -24,35 +25,39 @@ const NavBar = ({ isTopOfPage, selectedPage, setSelectedPage}: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* logo left side of navbar */}
-            <img alt="logo" src={Logo} />
+              <img alt="logo" className="h-10 hover:cursor-pointer" src={Logo} onClick={() => setSelectedPage(SelectedPage.HERO)}/>
             {/* menu right side of navbar */}
             {/* desktop screen */}
-            {isAboveMediumScreen ? (<div className={`${flexBetween} w-full`}>
-              <div className={`${flexBetween} gap-8 text-sm`}>
+            {isAboveMediumScreen ? (<div className={`flex justify-end w-full`}>
+              <div className={`${flexBetween} gap-8 text-sm mx-8`}>
                 <Link
+                  indexText="0.1"
                   page="My Expertise"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
                 />
                 <Link
+                  indexText="0.2"
                   page="About"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
                 />
                 <Link
+                  indexText="0.3"
                   page="My Portfolio"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
                 />
                 <Link
+                  indexText="0.4"
                   page="Contact Me"
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
                 />
               </div>
               <div className={`${flexBetween} gap-8`}>
-                <ActionButton setSelectedPage={setSelectedPage}>
-                  Sign in
+                <ActionButton>
+                  Resume
                 </ActionButton>
               </div>
             </div>):( //------------------mobile view----------------
@@ -66,45 +71,62 @@ const NavBar = ({ isTopOfPage, selectedPage, setSelectedPage}: Props) => {
         </div>
       </div>
       {/* Mobile Modal */}
+      {/* AnimatePresence prevents react from removing the node from the DOM before the exit transition is fired */}
+      <AnimatePresence>
       {!isAboveMediumScreen && isMenuToggled && (
-        <div className="flex flex-col fixed right-0 bottom-0 z-40 h-full w-[300px] bg-dark-300 drop-shadow-x justify-between">
-          {/* close button */}
-          <div className="flex justify-end p-12">
-            <button onClick={()=> setIsMenuToggled(!isMenuToggled)}>
-              <XMarkIcon className="h-6 w-6 text-gray-600"></XMarkIcon>
-            </button>
-          </div>
-          {/* menu items */}
-          <div className={`flex flex-col text-2xl gap-10 ml-[33%]`}>
-            <Link
-              page="My Expertise"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-            <Link
-              page="About"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-            <Link
-              page="My Portfolio"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-            <Link
-              page="Contact Me"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
-          </div>
-          {/* sign in */}
-          <div className="ml-[33%] pb-12">
-            <ActionButton setSelectedPage={setSelectedPage}>
-            Sign in
-            </ActionButton>
-          </div>
-        </div>
+          <motion.div 
+            className="flex flex-col fixed right-0 bottom-0 z-40 h-full w-[300px] bg-dark-primary shadow-[20px_0px_50px_0px_rgba(255,255,255,0.1)] justify-between"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* close button */}
+            <div className="flex justify-end p-12">
+              <button onClick={()=> setIsMenuToggled(!isMenuToggled)}>
+                <XMarkIcon className="h-6 w-6 text-gray-600"></XMarkIcon>
+              </button>
+            </div>
+            {/* menu items */}
+            <div className={`flex flex-col text-2xl gap-10 ml-[33%]`}>
+              <Link
+                page="My Expertise"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+                isMenuToggled={isMenuToggled}
+                setIsMenuToggled={setIsMenuToggled}
+              />
+              <Link
+                page="About"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+                isMenuToggled={isMenuToggled}
+                setIsMenuToggled={setIsMenuToggled}
+              />
+              <Link
+                page="My Portfolio"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+                isMenuToggled={isMenuToggled}
+                setIsMenuToggled={setIsMenuToggled}
+              />
+              <Link
+                page="Contact Me"
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+                isMenuToggled={isMenuToggled}
+                setIsMenuToggled={setIsMenuToggled}
+              />
+            </div>
+            {/* Resume */}
+            <div className="ml-[33%] pb-12">
+              <ActionButton>
+              Resume
+              </ActionButton>
+            </div>
+          </motion.div>
       )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -6,6 +6,7 @@ import { SelectedPage } from "@/shared/types";
 import MyPortfolio from "./scenes/myportfolio";
 import ContactMe from "./scenes/contactme";
 import Footer from "./scenes/footer";
+import MyExpertise from "./scenes/myexpertise";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.MYEXPERTISE);
@@ -15,7 +16,7 @@ function App() {
     const handleScroll = () => {
       if (window.scrollY === 0) {
         setIsTopOfPage(true);
-        setSelectedPage(SelectedPage.MYEXPERTISE);
+        setSelectedPage(SelectedPage.HERO);
       }
       if(window.scrollY!== 0) setIsTopOfPage(false);
     }
@@ -31,6 +32,9 @@ function App() {
         setSelectedPage={setSelectedPage}
       />
       <Hero 
+        setSelectedPage={setSelectedPage}
+      />
+      <MyExpertise 
         setSelectedPage={setSelectedPage}
       />
       <About 
