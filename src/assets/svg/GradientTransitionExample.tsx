@@ -1,6 +1,4 @@
-type Props = {}
-
-const ComputerSVG = (props: Props) => {
+const ComputerSVG = () => {
   return (
     <svg
         xmlns="http://www.w3.org/2000/svg"

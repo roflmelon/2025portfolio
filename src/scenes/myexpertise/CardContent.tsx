@@ -1,5 +1,5 @@
 import BackendSVG from "@/assets/svg/BackendSVG";
-import ComputerSVG from "@/assets/svg/computerSvg";
+import ComputerSVG from "@/assets/svg/ComputerSVG";
 import FrontendSVG from "@/assets/svg/FrontendSVG";
 import PhotographySVG from "@/assets/svg/PhotographySVG";
 import { SkillCardType } from "@/shared/types";

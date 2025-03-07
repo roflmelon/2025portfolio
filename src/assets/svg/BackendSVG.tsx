@@ -1,6 +1,4 @@
-type Props = {}
-
-const BackendSVG = (props: Props) => {
+const BackendSVG = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32" className="relative group size-14">
   <path 
