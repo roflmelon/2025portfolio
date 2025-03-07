@@ -18,6 +18,12 @@ export default {
           primary: "#0B0E1F",
           secondary: "#171717",
         },
+        textColor:{
+          main:"#A586ED",
+          gradStart1:"#a855f7",
+          gradMid1:"#818cf8",
+          gradEnd1:"#3b82f6"
+        }
         // fix this when implementing light mode
         // light: {
         //   50: "#ffffff",

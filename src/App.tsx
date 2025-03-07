@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-dark-600 z-[20]">
+    <div className="bg-dark-600 z-[20] overflow-hidden">
       <NavBar 
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
@@ -34,9 +34,7 @@ function App() {
       <Hero 
         setSelectedPage={setSelectedPage}
       />
-      <MyExpertise 
-        setSelectedPage={setSelectedPage}
-      />
+      <MyExpertise/>
       <About 
         setSelectedPage={setSelectedPage}
       />

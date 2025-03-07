@@ -1,72 +1,71 @@
 import { SelectedPage } from "@/shared/types";
-import ActionButton from "@/shared/ActionButton";
-import HomePageText from "@/assets/images/HomePageText.png"; 
-import HomePageGraphic from "@/assets/images/HomePageGraphic.png"; 
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
 
-type Props = {setSelectedPage: (value: SelectedPage) => void}
+type Props = { setSelectedPage: (value: SelectedPage) => void };
 
-const Hero = ({setSelectedPage}: Props) => {
+const Hero = ({ setSelectedPage }: Props) => {
+  // Define the animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5, // Stagger the animations of child elements by 0.3 seconds
+      },
+    },
+  };
 
+  const childVariants = {
+    hidden: { opacity: 0, x: -5 },
+    visible: { opacity: 1, x: 0 },
+  };
 
   return (
-    <section id="hero" className="gap-16 bg-dark-primary py-10 md:h-lvh md:pb-0">
-        {/* Image and main header */}
-        <motion.div 
-            className="md:flex mx-auto w-5/6 items-center justify-center md:h-dvh"
-            onViewportEnter={()=> setSelectedPage(SelectedPage.HERO)}
-        >
-            {/* Main header */}
-            <div className="z-10 mt-32 md:basis-3/5">
-                {/* Headings */}
-                <motion.div 
-                    className="md:-mt-20"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once:true, amount: 0.5 }}
-                    transition={{ duration: 0.5 }}
-                    variants={{
-                        hidden: { opacity: 0, x: -100 },
-                        visible: { opacity: 1, x: 0 }
-                    }}
-                >
-                    <div className="relative">
-                        <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
-                            <img alt="home-page-text" src={HomePageText} />
-                        </div>
-                    </div>
-                    <p className="mt-8 text-sm md:text-start">Hi, This is Harry</p>
-                </motion.div>
-                {/* Actions */}
-                <motion.div 
-                    className="mt-8 flex items-center gap-8"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once:true, amount: 0.5 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                    variants={{
-                        hidden: { opacity: 0, x: -100 },
-                        visible: { opacity: 1, x: 0 }
-                    }}
-                >
-                    <ActionButton>Contact Me</ActionButton>
-                    <AnchorLink 
-                        className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
-                        onClick={() => setSelectedPage(SelectedPage.CONTACTME)}
-                        href={`#${SelectedPage.CONTACTME}`}
-                    >
-                        <p>Learn More</p>
-                    </AnchorLink>
-                </motion.div>
-            </div>
-            {/* Image */}
-            <div className="flex basis-3/5 justify-center md:z-10 md:ml-40 md:mt-16 md:justify-items-end">
-                <img alt="home-page-graphic" src={HomePageGraphic} />
-            </div>
-        </motion.div>
+    <section id="hero" className="bg-dark-primary py-10 md:h-lvh md:pb-0">
+      {/* Image and main header */}
+      <motion.div
+        className="md:flex mx-auto w-5/6 items-center justify-start md:h-dvh"
+        onViewportEnter={() => setSelectedPage(SelectedPage.HERO)}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Main header */}
+        <div className="z-10 py-20 md:mt-0 md:basis-4/5">
+          {/* Text */}
+          <motion.div
+            className="md:-mt-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8 }}
+            variants={containerVariants}
+          >
+            <motion.p
+              className="mt-8 text-md text-textColor-main font-mono md:text-start"
+              variants={childVariants}
+            >
+              👋 Hey there!
+            </motion.p>
+            <motion.h1
+              className="mt-2 pl-1 text-6xl font-semibold md:text-start"
+              variants={childVariants}
+            >
+              I'm Harry and I like coding
+              <br />
+              <span className="text-textColor-main"> Beautiful websites</span>
+            </motion.h1>
+            <motion.p
+              className="mt-3 pl-2 text-md md:text-start"
+              variants={childVariants}
+            >
+              I'm a software developer specializing in improving <span className=" bg-gradient-to-r from-textColor-gradStart1 via-textColor-gradMid1 to-textColor-gradEnd1 inline-block text-transparent bg-clip-text">user experience.</span>
+            </motion.p>
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

@@ -19,3 +19,9 @@ export interface PortfolioType {
   description?: string,
   image: string,
 }
+
+export interface SkillCardType {
+  icon: JSX.Element,
+  title: string,
+  description: string,
+}

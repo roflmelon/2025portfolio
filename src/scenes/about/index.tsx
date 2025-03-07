@@ -126,7 +126,7 @@ const AboutMePage = ({setSelectedPage}: Props) => {
                     {/* button */}
                     <div className="relative mt-16">
                         <div className="before:absolute before:-bottom-20 before:right-10 before:z-[-1] before:content-sparkles">
-                            <ActionButton setSelectedPage={setSelectedPage}>Learn More</ActionButton>
+                            <ActionButton>Learn More</ActionButton>
                         </div>
                     </div>
                 </div>
