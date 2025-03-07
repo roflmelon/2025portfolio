@@ -1,11 +1,11 @@
-import Logo from "@/assets/images/Logo.png"
+import Logo from "@/assets/images/LogoDarkTheme.png"
 
 const Footer = () => {
   return (
     <footer className="bg-dark-500 py-16">
         <div className="justify-content mx-auto w-5/6 gap-16 md:flex">
             <div className="mt-16 basis-1/2 md:mt-0">
-                <img alt="logo" src={Logo}/>
+                <img alt="logo" src={Logo} className="scale-[0.25]"/>
                 <p className="my-5">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, officia laboriosam minima, dolor cupiditate eius dolorem modi deserunt maxime autem sit. Et, impedit dolor ab tempora tempore cumque laboriosam illum?
                 </p>

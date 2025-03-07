@@ -31,7 +31,7 @@ const SkillCards = ({icon, title, description}: Props) => {
                         <span className="relative text-2xl font-semibold text-white py-2 group">
                             {title}
                             {/* Gradient Background Highlight */}
-                            <span className="absolute left-0 bottom-0 w-full h-2 bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 scale-x-0 transition-transform duration-500 group-hover:scale-x-150 origin-left rounded-r-3xl" />
+                            <span className="absolute left-0 bottom-0 w-7/12 max-w-[312px] h-2 bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 scale-x-0 transition-transform duration-500 group-hover:scale-x-150 origin-left rounded-r-3xl" />
                         </span>
                     </div>
                 </div>

@@ -59,7 +59,7 @@ const Hero = ({ setSelectedPage }: Props) => {
               className="mt-3 pl-2 text-md md:text-start"
               variants={childVariants}
             >
-              I'm a software developer specializing in improving <span className=" bg-gradient-to-r from-textColor-gradStart1 via-textColor-gradMid1 to-textColor-gradEnd1 inline-block text-transparent bg-clip-text">user experience.</span>
+              I'm a software developer specializing in improving <span className="bg-gradient-to-r from-textColor-gradStart1 via-textColor-gradMid1 to-textColor-gradEnd1 inline-block text-transparent bg-clip-text">user experience.</span>
             </motion.p>
           </motion.div>
         </div>

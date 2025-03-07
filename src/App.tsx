@@ -31,19 +31,11 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <Hero 
-        setSelectedPage={setSelectedPage}
-      />
+      <Hero setSelectedPage={setSelectedPage}/>
       <MyExpertise/>
-      <About 
-        setSelectedPage={setSelectedPage}
-      />
-      <MyPortfolio
-        setSelectedPage={setSelectedPage}
-      />
-      <ContactMe
-        setSelectedPage={setSelectedPage}
-      />
+      <About/>
+      <MyPortfolio setSelectedPage={setSelectedPage}/>
+      <ContactMe setSelectedPage={setSelectedPage}/>
       <Footer/>
     </div>
   );

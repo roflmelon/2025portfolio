@@ -1,53 +1,12 @@
-import HText from "@/shared/HText";
-import { PortfolioType, SelectedPage } from "@/shared/types";
-import image1 from "@/assets/images/image1.png"
-import image2 from "@/assets/images/image2.png"
-import image3 from "@/assets/images/image3.png"
-import image4 from "@/assets/images/image4.png"
-import image5 from "@/assets/images/image5.png"
-import image6 from "@/assets/images/image6.png"
+import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
-
-//change this eventually to a api call
-const portfolio: Array<PortfolioType> = [
-  {
-    project: "Project 1",
-    image: image1,
-  },
-  {
-    project: "Project 2",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique minima dolore totam fugit! Laudantium ipsum sequi mollitia eaque ipsa eligendi quaerat doloremque impedit dolore voluptas? In quod reiciendis impedit?",
-    image: image2,
-  },
-  {
-    project: "Project 3",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique minima dolore totam fugit! Laudantium ipsum sequi mollitia eaque ipsa eligendi quaerat doloremque impedit dolore voluptas? In quod reiciendis impedit?",
-    image: image3,
-  },
-  {
-    project: "Project 4",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique minima dolore totam fugit! Laudantium ipsum sequi mollitia eaque ipsa eligendi quaerat doloremque impedit dolore voluptas? In quod reiciendis impedit?",
-    image: image4,
-  },
-  {
-    project: "Project 5",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique minima dolore totam fugit! Laudantium ipsum sequi mollitia eaque ipsa eligendi quaerat doloremque impedit dolore voluptas? In quod reiciendis impedit?",
-    image: image5,
-  },
-  {
-    project: "Project 6",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique minima dolore totam fugit! Laudantium ipsum sequi mollitia eaque ipsa eligendi quaerat doloremque impedit dolore voluptas? In quod reiciendis impedit?",
-    image: image6,
-  }
-]
 
 
 type Props = {setSelectedPage: (value: SelectedPage) => void}
 
 const MyPortfolio = ({setSelectedPage}: Props) => {
   return (
-    <section id="myportfolio" className="w-full bg-dark-700 py-40">
+    <section id="myportfolio" className="w-full bg-dark-secondary h-lvh py-40">
       <motion.div
         onViewportEnter={()=> setSelectedPage(SelectedPage.MYPORTFOLIO)}
       >
@@ -62,25 +21,31 @@ const MyPortfolio = ({setSelectedPage}: Props) => {
               visible: { opacity: 1, x: 0 }
           }}
         >
-          <div className="md:w-3/5">
-            <HText>My Portfolio</HText>
-            <p className="py-5">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima sequi id pariatur aliquid, corrupti dicta facilis quae officia, omnis deserunt ab eveniet vero odio suscipit explicabo. Cupiditate laudantium natus minus?
-            </p>
-          </div>
+          <p className="font-mono mb-2 relative">
+              0.3{" "}
+              <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text relative z-10">
+              My Portfolio
+              </span>
+              <hr className="absolute left-40 top-2.5 w-lvw h-0.5 bg-gray-200 border-0 rounded-sm" />
+          </p>
+          <motion.h2
+              className="font-semibold text-5xl mb-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                  opacity: 1,
+              },
+              }}
+          >
+              Projects
+          </motion.h2>
         </motion.div>
-        <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
-          <ul className="w-[2800px] whitespace-nowrap">
-            {portfolio.map((item:PortfolioType, index) => (
-              <ProjectCard
-                key={`${item.project}-${index}`}
-                project={item.project}
-                description={item.description}
-                image={item.image}
-              />
-            ))}
-
-          </ul>
+        <div className="flex justify-center items-center">
+          <h2 className="text-5xl mt-32">Coming Soon</h2>
         </div>
       </motion.div>
     </section>
