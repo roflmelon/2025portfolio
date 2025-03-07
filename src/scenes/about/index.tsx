@@ -48,7 +48,7 @@ const AboutMePage = () => {
                         
                         
                     </div>
-                    <div className="relative before:content-[''] before:absolute before:-top-5 before:left-52 before:size-28 before:bg-[url('@/assets/images/arrow1.png')] before:bg-contain before:bg-no-repeat after:content-[''] after:absolute after:bottom-0 after:-left-8 after:size-28 after:bg-[url('@/assets/images/sparkles.png')] after:bg-contain after:bg-no-repeat">
+                    <div className="relative before:content-[''] before:absolute before:-top-5 before:left-52 before:size-28 before:bg-[url('@/assets/images/arrow.png')] before:bg-contain before:bg-no-repeat after:content-[''] after:absolute after:bottom-0 after:-left-8 after:size-28 after:bg-[url('@/assets/images/sparkles.png')] after:bg-contain after:bg-no-repeat">
                         <img src={Selfie} alt="Selfie" className="float-right size-64 rounded-full object-cover" />
                     </div>
                     
