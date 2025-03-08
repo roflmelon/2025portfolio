@@ -5,7 +5,7 @@ const FrontendSVG = () => {
         className="transition-all duration-500 group-hover:fill-[#61DAFB] fill-white"
         cx="12" cy="12" r="2.5"
       />
-      <g stroke="white" stroke-width="1.5" fill="none">
+      <g stroke="white" strokeWidth="1.5" fill="none">
         <ellipse
           className="transition-all duration-500 group-hover:stroke-[#61DAFB] stroke-white"
           rx="10" ry="4.5" cx="12" cy="12" transform="rotate(60, 12, 12)"

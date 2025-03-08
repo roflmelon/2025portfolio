@@ -9,7 +9,7 @@ import Footer from "./scenes/footer";
 import MyExpertise from "./scenes/myexpertise";
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.MYEXPERTISE);
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.HERO);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true); 
 
   useEffect(() => {
@@ -25,17 +25,23 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-dark-600 z-[20] overflow-hidden">
+    <div className="z-[20] overflow-hidden">
       <NavBar 
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <Hero setSelectedPage={setSelectedPage}/>
-      <MyExpertise/>
-      <About/>
-      <MyPortfolio setSelectedPage={setSelectedPage}/>
-      <ContactMe setSelectedPage={setSelectedPage}/>
+      <Hero setSelectedPage={setSelectedPage}
+        isTopOfPage={isTopOfPage}
+        selectedPage={selectedPage}/>
+      <MyExpertise setSelectedPage={setSelectedPage} 
+        selectedPage={selectedPage}/>
+      <About setSelectedPage={setSelectedPage}
+        selectedPage={selectedPage}/>
+      <MyPortfolio setSelectedPage={setSelectedPage}
+        selectedPage={selectedPage}/>
+      <ContactMe setSelectedPage={setSelectedPage}
+        selectedPage={selectedPage}/>
       <Footer/>
     </div>
   );

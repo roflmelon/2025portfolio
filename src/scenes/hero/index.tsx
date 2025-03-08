@@ -1,9 +1,9 @@
 import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 
-type Props = { setSelectedPage: (value: SelectedPage) => void };
+type Props = { setSelectedPage: (value: SelectedPage) => void, selectedPage:SelectedPage, isTopOfPage:boolean };
 
-const Hero = ({ setSelectedPage }: Props) => {
+const Hero = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
   // Define the animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,7 +25,11 @@ const Hero = ({ setSelectedPage }: Props) => {
       {/* Image and main header */}
       <motion.div
         className="md:flex mx-auto w-5/6 items-center justify-start md:h-dvh"
-        onViewportEnter={() => setSelectedPage(SelectedPage.HERO)}
+        onViewportEnter={() => {setSelectedPage(SelectedPage.HERO);
+          console.log(selectedPage)
+          if(isTopOfPage)
+            setSelectedPage(SelectedPage.HERO)
+        }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"

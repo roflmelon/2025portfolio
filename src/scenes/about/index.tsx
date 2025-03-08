@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
 import Selfie from "@/assets/images/selfie.jpg"
+import { SelectedPage } from "@/shared/types";
 
+type Props = {setSelectedPage: (value: SelectedPage) => void; selectedPage:SelectedPage}
 
-const AboutMePage = () => {
+const AboutMePage = ({selectedPage, setSelectedPage}: Props) => {
   return (
     <section id="about" className="flex justify-center items-center w-lvw bg-dark-primary min-h-lvh overflow-hidden">
-        <div className="flex flex-col justify-center items-center mx-auto w-5/6 py-32">
+        <motion.div className="flex flex-col justify-center items-center mx-auto w-5/6 py-32" onViewportEnter={()=> {setSelectedPage(SelectedPage.ABOUT);
+            console.log(selectedPage)
+        }}>
             {/* header title */}
-            <div className="w-11/12 mb-16">
+            <div className="w-11/12 mb-16 relative">
                 <p className="font-mono mb-2 relative">
                     0.2{" "}
-                    <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text relative z-10">
+                    <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text z-10">
                     About Me
                     </span>
-                    <hr className="absolute left-40 top-2.5 w-lvw h-0.5 bg-gray-200 border-0 rounded-sm" />
                 </p>
+                <hr className="absolute left-40 top-2.5 w-lvw h-0.5 bg-gray-200 border-0 rounded-sm" />
                 <motion.h2
                     className="font-semibold text-5xl mb-16"
                     initial="hidden"
@@ -45,16 +49,15 @@ const AboutMePage = () => {
                             </p>
                             
                         </div>
-                        
-                        
+                        {/* selfie picture */}
                     </div>
-                    <div className="relative before:content-[''] before:absolute before:-top-5 before:left-52 before:size-28 before:bg-[url('@/assets/images/arrow.png')] before:bg-contain before:bg-no-repeat after:content-[''] after:absolute after:bottom-0 after:-left-8 after:size-28 after:bg-[url('@/assets/images/sparkles.png')] after:bg-contain after:bg-no-repeat">
+                    <div className="relative before:content-[''] before:absolute before:-top-5 before:left-52 before:size-28 before:bg-[url('@/assets/images/Arrow.png')] before:bg-contain before:bg-no-repeat after:content-[''] after:absolute after:bottom-0 after:-left-8 after:size-28 after:bg-[url('@/assets/images/Sparkles.png')] after:bg-contain after:bg-no-repeat">
                         <img src={Selfie} alt="Selfie" className="float-right size-64 rounded-full object-cover" />
                     </div>
                     
                 </div>
             </div>
-        </div>
+        </motion.div>
     </section>
   )
 }

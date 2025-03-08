@@ -1,10 +1,14 @@
-import { SkillCardType } from "@/shared/types";
+import { SelectedPage, SkillCardType } from "@/shared/types";
 import { motion } from "framer-motion";
 import SkillCards from "./SkillCards";
 import CardContent from "./CardContent";
 
+type Props = {
+  setSelectedPage: (value: SelectedPage) => void;
+  selectedPage: SelectedPage;
+}
 
-const MyExpertise = () => {
+const MyExpertise = ({selectedPage, setSelectedPage}: Props) => {
   // Define the animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,16 +28,19 @@ const MyExpertise = () => {
 
   return (
     <section id="myexpertise" className="flex justify-center items-center w-lvw bg-dark-secondary min-h-lvh overflow-hidden">
-      <div className="flex flex-col justify-center items-center mx-auto w-5/6 py-32">
+      <motion.div className="flex flex-col justify-center items-center mx-auto w-5/6 py-32" 
+            viewport={{ once: true, amount: 0.1 }}onViewportEnter={()=> {setSelectedPage(SelectedPage.MYEXPERTISE)
+        console.log(selectedPage)
+      }}>
         {/* header title */}
-        <div className="w-11/12 mb-16">
+        <div className="w-11/12 mb-16 relative">
           <p className="font-mono mb-2 relative">
             0.1{" "}
-            <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text relative z-10">
+            <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text z-10">
               My Expertise
             </span>
-            <hr className="absolute left-40 top-2.5 w-lvw h-0.5 bg-gray-200 border-0 rounded-sm" />
           </p>
+          <hr className="absolute left-40 top-2.5 w-lvw h-0.5 bg-gray-200 border-0 rounded-sm" />
           <motion.h2
             className="font-semibold text-5xl"
             initial="hidden"
@@ -61,7 +68,7 @@ const MyExpertise = () => {
         >
           {/* card */}
           {CardContent.map((content: SkillCardType)=>(
-            <motion.div variants={childVariants}>
+            <motion.div key={content.title + content.description} variants={childVariants}>
             <SkillCards 
                 icon={content.icon}
                 title={content.title}
@@ -70,7 +77,7 @@ const MyExpertise = () => {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

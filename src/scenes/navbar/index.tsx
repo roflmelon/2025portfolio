@@ -6,6 +6,7 @@ import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
 import { AnimatePresence, motion } from "framer-motion";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 type Props = {
   isTopOfPage: boolean;
@@ -25,7 +26,11 @@ const NavBar = ({ isTopOfPage, selectedPage, setSelectedPage}: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* logo left side of navbar */}
-              <img alt="logo" className="h-10 cursor-pointer" src={Logo} onClick={() => setSelectedPage(SelectedPage.HERO)}/>
+            <AnchorLink href="#hero">
+              <img alt="logo" className="h-10 cursor-pointer" src={Logo} onClick={() => {setSelectedPage(SelectedPage.HERO);
+                console.log(selectedPage)
+              }}/>
+            </AnchorLink>
             {/* menu right side of navbar */}
             {/* desktop screen */}
             {isAboveMediumScreen ? (<div className={`flex justify-end w-full`}>

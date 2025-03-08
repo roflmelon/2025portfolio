@@ -25,7 +25,7 @@ function Link({ indexText, page, selectedPage, setSelectedPage, isMenuToggled, s
       className={`${selectedPage === lowerCasePage ? "text-white" : "text-dark-500"} transition duration-500 hover:text-white`}
     >
       {indexText !== undefined ? (
-        <span className="bg-gradient-to-r from-indigo-600 via-violet-400 to-indigo-200 inline-block text-transparent bg-clip-text transition duration-500 text-white">
+        <span className="bg-gradient-to-r from-purple-500 via-indigo-400 to-blue-500 inline-block text-transparent bg-clip-text transition duration-500">
           {indexText + " "}
         </span>
       ) : null}

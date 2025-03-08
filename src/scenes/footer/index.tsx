@@ -1,31 +1,44 @@
-import Logo from "@/assets/images/LogoDarkTheme.png"
+import Logo from "@/assets/svg/Logo"
+import GitHub from "@/assets/svg/socials/github"
+import Instagram from "@/assets/svg/socials/instagram"
+import Linkedin from "@/assets/svg/socials/linkedin"
+import YouTube from "@/assets/svg/socials/youtube"
+
 
 const Footer = () => {
   return (
-    <footer className="bg-dark-500 py-16">
-        <div className="justify-content mx-auto w-5/6 gap-16 md:flex">
-            <div className="mt-16 basis-1/2 md:mt-0">
-                <img alt="logo" src={Logo} className="scale-[0.25]"/>
-                <p className="my-5">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, officia laboriosam minima, dolor cupiditate eius dolorem modi deserunt maxime autem sit. Et, impedit dolor ab tempora tempore cumque laboriosam illum?
-                </p>
-                <p>
-                    © 2025 Harry Zhou. All rights reserved.
-                </p>
-            </div>
-            <div className="mt-16 basis-1/4 md:mt-0">
-                <h4 className="font-bold">Links</h4>
-                <p className="my-5">dolor perspiciatis exercitationem dolore voluptates, a omnis ratione minima! Nemo, voluptates?</p>
-                <p className="my-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <p>Provident corrupti esse ea expedita laudantium!</p>
-            </div>
-            <div className="mt-16 basis-1/4 md:mt-0">
-                <h4 className="font-bold">Contact Me</h4>
-                <p className="my-5">Dolorum voluptatem doloremque omnis.</p>
-                <p>(416)-123-1234</p>
+    <footer className="bg-dark-primary py-16">
+        <div className=" w-5/6 mx-auto flex justify-center">
+            <div className="w-11/12 flex justify-center gap-16 flex-wrap">
+                {/* left side/top Disclaimer */}
+                <div className="mt-16 md:mt-0 w-[700px]">
+                    {/* svg logo */}
+                    <Logo />
+                    <p className="my-5 text-gray-500">
+                        Designed by Anita Thang using Figma and coded in Visual Studio. Built with Vite TypeScript React with Tailwind CSS. Deployed on Cloudflare Pages.
+                    </p>
+                    <p className="my-5 text-gray-500">
+                        © 2025 Harry Zhou. All rights reserved.
+                    </p>
+                </div>
+                
+                {/* right side/bottom Socials*/}
+                <div className="mt-16 md:mt-0 w-[700px]">
+                    <h4 className="font-bold text-xl mb-[42px] text-gray-500">Links</h4>
+                    <div className="flex gap-8">
+                        {/* svg social links */}
+                        <a href="https://github.com/roflmelon">
+                        <GitHub/></a>
+                        <a href="https://www.instagram.com/">
+                        <Instagram/></a>
+                        <a href="https://www.linkedin.com/in/harryzhou95/">
+                        <Linkedin/></a>
+                        <a href="https://www.youtube.com/">
+                        <YouTube/></a>
+                    </div>
+                </div>
             </div>
         </div>
-        
     </footer>
   )
 }
